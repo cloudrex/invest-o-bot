@@ -1,0 +1,37 @@
+[
+    {
+        "company": "MSFT",
+        "headline": "Microsoft appoints new inexperienced CEO",
+        "effect": -1
+    },
+    {
+        "company": "MSFT",
+        "headline": "Microsoft reportedly investing in new technologies",
+        "effect": 1
+    },
+    {
+        "company": "Apple",
+        "headline": "Apple's iPhone reportedly bends inside customer's pockets",
+        "effect": -1
+    },
+    {
+        "company": "Apple",
+        "headline": "Apple unveils new products for the coming year",
+        "effect": 1
+    },
+    {
+        "company": "TSLA",
+        "headline": "Tesla's CEO releases video publicly inhaling illegal substances",
+        "effect": -1
+    },
+    {
+        "company": "AMZN",
+        "headline": "Amazon expands it's business to autonomous shops",
+        "effect": 1
+    },
+    {
+        "company": "ORCL",
+        "headline": "Oracle's CTO involved in a sex scandal",
+        "effect": -1
+    }
+]
