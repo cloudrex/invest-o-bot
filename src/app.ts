@@ -3,8 +3,11 @@ require("dotenv").config();
 
 import path from "path";
 import fs from "fs";
-import {StoreActionType, StockReducer, IState, InitialState} from "./store";
-import {Bot, Settings, Log, LogLevel} from "@cloudrex/forge";
+import {StoreActionType, IState, InitialState} from "./state/store";
+import {Bot, Settings, Log, LogLevel, Store} from "@cloudrex/forge";
+import GameCore from "./core/game-core";
+import StockReducer from "./state/reducers/stock";
+import CompanyReducer from "./state/reducers/company";
 
 // Verify that .env file exists (bot configuration)
 if (!fs.existsSync(".env")) {
@@ -36,7 +39,13 @@ async function init(): Promise<void> {
     });
 
     // Register reducers
-    bot.store.addReducer(StockReducer);
+    bot.store.addReducer(Store.mergeReducers(
+        StockReducer,
+        CompanyReducer
+    ));
+
+    // Load companies
+    await GameCore.loadCompanies(bot.store);
 
     // Connect and start the bot
     await bot.connect();

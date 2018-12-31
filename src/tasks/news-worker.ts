@@ -1,5 +1,5 @@
 import {Task, IFragmentMeta, Log, Utils} from "@cloudrex/forge";
-import {StoreActionType} from "../store";
+import {StoreActionType} from "../state/store";
 
 export default class NewsWorker extends Task {
     public static chance: number = 1;
