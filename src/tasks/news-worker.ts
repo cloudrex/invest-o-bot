@@ -6,11 +6,11 @@ export default class NewsWorker extends Task {
 
     readonly meta: IFragmentMeta = {
         name: "news-worker",
-        description: "Responsible for dispatching news"
+        description: "Responsible for dispatching news and updating stocks accordingly"
     };
 
     // Every 1 minute
-    readonly interval: number = 0.5 * 60_000;
+    readonly interval: number = 0.3 * 60_000;
 
     public run(): void {
         Log.verbose("[NewsWorker] Running news worker");

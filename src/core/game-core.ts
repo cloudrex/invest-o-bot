@@ -1,21 +1,25 @@
-import {Log, Store} from "@cloudrex/forge";
-import {FileHandle, System} from "@atlas/xlib";
+import fs from "fs";
+import {Log, Store, Utils} from "@cloudrex/forge";
 import {ICompany, StoreActionType} from "../state/store";
+
+const CompaniesFile: string = "data/companies.json";
 
 export default abstract class GameCore {
     public static async loadCompanies(store: Store): Promise<void> {
         Log.verbose("[App] Loading company data");
 
-        const companiesFile: FileHandle | null = System.open("data/companies.json");
+        if (!fs.existsSync(CompaniesFile)) {
+            Log.fatal("[App] Expecting companies file to exist");
 
-        if (companiesFile === null) {
-            throw Log.fatal("[App] Expecting companies data file to exist");
+            return;
         }
 
-        const companies: ICompany[] = await companiesFile.readAllAsJson();
+        const companies: ICompany[] = await Utils.readJson(CompaniesFile);
 
         for (const company of companies) {
             store.dispatch(StoreActionType.AddCompany, company);
         }
+
+        Log.success("[App] Finished loading company data");
     }
 }

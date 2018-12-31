@@ -1,4 +1,4 @@
-import {Reducer, IStoreAction} from "@cloudrex/forge";
+import {Reducer, IStoreAction, Log} from "@cloudrex/forge";
 import {IState, StoreActionType, ICompany, CompanyMap} from "../store";
 
 const CompanyReducer: Reducer<IState> = (action: IStoreAction, state?: IState): IState | null => {
@@ -9,7 +9,9 @@ const CompanyReducer: Reducer<IState> = (action: IStoreAction, state?: IState): 
     switch (action.type) {
         case StoreActionType.AddCompany: {
             const company: ICompany = action.payload;
-            const companies: CompanyMap = (state.companies.clone() as CompanyMap);
+
+            // TODO: .clone() throws error
+            const companies: CompanyMap = state.companies;
 
             companies.set(company.acronym, company);
 
@@ -17,8 +19,6 @@ const CompanyReducer: Reducer<IState> = (action: IStoreAction, state?: IState): 
                 ...state,
                 companies
             };
-
-            break;
         }
     }
 

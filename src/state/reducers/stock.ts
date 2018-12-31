@@ -7,13 +7,13 @@ const StockReducer: Reducer<IState> = (action: IStoreAction<any>, state?: IState
             return null;
         }
 
-        // TODO: Fix clone error, hot-fixed with (as any)
-        const companies: CompanyMap = (state.companies.clone() as any);
+        // TODO: Throws error on .clone()
+        const companies: CompanyMap = state.companies;
         const company: ICompany = companies.get(action.payload.acronym) as ICompany;
 
         const newCompany: ICompany = {
             ...company,
-            price: action.payload.change
+            price: company.price + action.payload.change
         };
 
         companies.set(action.payload.acronym, newCompany);
