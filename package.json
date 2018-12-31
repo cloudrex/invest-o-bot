@@ -2,7 +2,7 @@
     "name": "invest-o-bot",
     "version": "1.0.0",
     "description": "Fun investing simulator for Discord",
-    "main": "index.js",
+    "main": "dist/index.js",
     "scripts": {
         "start": "npm run build && node dist/app.js",
         "build": "tsc",
