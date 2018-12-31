@@ -3,7 +3,7 @@ require("dotenv").config();
 
 import path from "path";
 import fs from "fs";
-import {StoreActionType, StockReducer, IState} from "./store";
+import {StoreActionType, StockReducer, IState, InitialState} from "./store";
 import {Bot, Settings, Log, LogLevel} from "@cloudrex/forge";
 
 // Verify that .env file exists (bot configuration)
@@ -31,6 +31,7 @@ async function init(): Promise<void> {
             }
         }),
 
+        initialState: InitialState,
         owner: process.env.OWNER_ID
     });
 

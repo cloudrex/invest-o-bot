@@ -26,24 +26,23 @@ export const InitialState: IState = {
 export const StockReducer: Reducer<IState> = (action: IStoreAction<any>, state?: IState): IState | null => {
     if (action.type === StoreActionType.ChangeStockPrice) {
         if (state === undefined) {
-            return InitialState;
+            return null;
         }
-        else {
-            // TODO: Fix clone error, hot-fixed with (as any)
-            const companies: CompanyMap = (state.companies.clone() as any);
-            const company: ICompany = companies.get(action.payload.acronym) as ICompany;
+        
+        // TODO: Fix clone error, hot-fixed with (as any)
+        const companies: CompanyMap = (state.companies.clone() as any);
+        const company: ICompany = companies.get(action.payload.acronym) as ICompany;
 
-            const newCompany: ICompany = {
-                ...company,
-                price: action.payload.change
-            };
+        const newCompany: ICompany = {
+            ...company,
+            price: action.payload.change
+        };
 
-            companies.set(company.acronym, newCompany);
+        companies.set(company.acronym, newCompany);
 
-            return {
-                companies
-            };
-        }
+        return {
+            companies
+        };
     }
 
     return null;
