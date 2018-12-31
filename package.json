@@ -1,7 +1,7 @@
 {
-    "name": "example-forge-bot",
+    "name": "invest-o-bot",
     "version": "1.0.0",
-    "description": "A template bot to get you started using the Forge Bot Framework",
+    "description": "Fun investing simulator for Discord",
     "main": "index.js",
     "scripts": {
         "start": "npm run build && node dist/app.js",
