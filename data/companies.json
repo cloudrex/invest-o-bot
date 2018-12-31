@@ -1,0 +1,62 @@
+[
+    {
+        "name": "Microsoft",
+        "acronym": "MSFT",
+        "price": 100.39
+    },
+    {
+        "name": "Apple",
+        "acronym": "AAPL",
+        "price": 156.23
+    },
+    {
+        "name": "Oracle Corporation",
+        "acronym": "ORCL",
+        "price": 44.82
+    },
+    {
+        "name": "Google",
+        "acronym": "GOOGL",
+        "price": 1046.68
+    },
+    {
+        "name": "Samsung Electronics",
+        "acronym": "SSNLF",
+        "price": 44.20
+    },
+    {
+        "name": "Tesla",
+        "acronym": "TSLA",
+        "price": 333.87
+    },
+    {
+        "name": "Amazon",
+        "acronym": "AMZN",
+        "price": 1478.02
+    },
+    {
+        "name": "Walmart",
+        "acronym": "WMT",
+        "price": 92.13
+    },
+    {
+        "name": "Facebook",
+        "acronym": "FB",
+        "price": 133.20
+    },
+    {
+        "name": "Twitter",
+        "acronym": "TWTR",
+        "price": 28.43
+    },
+    {
+        "name": "Best Buy",
+        "acronym": "BBY",
+        "price": 51.34
+    },
+    {
+        "name": "Exxon Mobil",
+        "acronym": "XOM",
+        "price": 68.17
+    }
+]
