@@ -6,8 +6,8 @@ interface ILookupArgs {
 
 export default class LookupCommand extends Command {
     readonly meta = {
-        name: "hello",
-        description: "Say hello world"
+        name: "lookup",
+        description: "View stock information of a company"
     };
 
     readonly aliases: string[] = ["look", "stock"];
@@ -25,13 +25,13 @@ export default class LookupCommand extends Command {
         }
     ];
 
-    public async run(context: Context, args: ILookupArgs): Promise<void> {
+    public async run(x: Context, args: ILookupArgs): Promise<void> {
         if (args.company.length < 2 || args.company.length > 4) {
-            context.fail("Acronyms consist of 2-4 characters");
+            x.fail("Acronyms consist of 2-4 characters");
 
             return;
         }
 
-        context.fail("That company doesn't exist! Verify your acronym");
+        x.fail("That company doesn't exist! Verify your acronym");
     }
 };
