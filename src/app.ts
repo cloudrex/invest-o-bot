@@ -3,9 +3,8 @@ require("dotenv").config();
 
 import path from "path";
 import fs from "fs";
-import {StoreActionType, LogReducer, IState} from "./store";
-import {Bot, Settings, Command, Context, Log} from "@cloudrex/forge";
-import {EBotEvents} from "@cloudrex/forge/dist/core/bot-extra";
+import {StoreActionType, StockReducer, IState} from "./store";
+import {Bot, Settings, Log, LogLevel} from "@cloudrex/forge";
 
 // Verify that .env file exists (bot configuration)
 if (!fs.existsSync(".env")) {
@@ -13,7 +12,11 @@ if (!fs.existsSync(".env")) {
     process.exit(0);
 }
 
+Log.level = LogLevel.Debug;
+Log.hiddenItems = true;
+
 async function init(): Promise<void> {
+    // TODO: Export store as a global
     const bot: Bot = new Bot<IState, StoreActionType>({
         settings: new Settings({
             general: {
@@ -23,29 +26,19 @@ async function init(): Promise<void> {
 
             paths: {
                 commands: path.join(__dirname, process.env.COMMANDS_DIR as string),
-                services: path.join(__dirname, process.env.SERVICES_DIR as string)
+                services: path.join(__dirname, process.env.SERVICES_DIR as string),
+                tasks: path.join(__dirname, process.env.TASKS_DIR as string)
             }
         }),
 
         owner: process.env.OWNER_ID
     });
 
+    // Register reducers
+    bot.store.addReducer(StockReducer);
+
     // Connect and start the bot
     await bot.connect();
-
-    // BONUS: Log commands using the store
-    bot.store.addReducer(LogReducer);
-
-    // Dispatch log event upon command execution
-    bot.on(EBotEvents.CommandExecuted, (command: Command, context: Context) => {
-        bot.store.dispatch(StoreActionType.LogCommand, {
-            command: command.meta.name,
-            user: context.sender.tag,
-            time: Date.now()
-        });
-
-        Log.info(`Command '${command.meta.name}' was executed by '${context.sender.tag}'`);
-    });
 }
 
 init();
