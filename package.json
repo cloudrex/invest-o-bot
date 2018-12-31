@@ -1,0 +1,35 @@
+{
+    "name": "example-forge-bot",
+    "version": "1.0.0",
+    "description": "A template bot to get you started using the Forge Bot Framework",
+    "main": "index.js",
+    "scripts": {
+        "start": "npm run build && node dist/app.js",
+        "build": "tsc",
+        "config": "node scripts/configure.js"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/discord-forge/example-forge-bot.git"
+    },
+    "keywords": [
+        "discord",
+        "discord-bot"
+    ],
+    "author": "CloudRex <cloudrex@outlook.com>",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/discord-forge/example-forge-bot/issues"
+    },
+    "homepage": "https://github.com/discord-forge/example-forge-bot#readme",
+    "dependencies": {
+        "@cloudrex/forge": "^1.2.5-beta.7",
+        "dotenv": "^6.1.0"
+    },
+    "devDependencies": {
+        "@types/mongodb": "^3.1.17",
+        "@types/node": "^10.12.18",
+        "input": "^1.0.1",
+        "typescript": "^3.1.3"
+    }
+}
