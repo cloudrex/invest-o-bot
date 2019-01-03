@@ -1,5 +1,5 @@
 import {Task, IFragmentMeta, Log, Utils} from "@cloudrex/forge";
-import {StoreActionType} from "../state/store";
+import {Actions} from "../core/actions";
 
 export default class NewsWorker extends Task {
     public static chance: number = 1;
@@ -15,13 +15,10 @@ export default class NewsWorker extends Task {
     public run(): void {
         Log.verbose("[NewsWorker] Running news worker");
 
+        // TODO
         if (Utils.getRandomInt(0, NewsWorker.chance) === 0) {
             Log.verbose("Updating stock...");
-
-            this.bot.store.dispatch(StoreActionType.ChangeStockPrice, {
-                acronym: "MSFT",
-                change: Utils.getRandomInt(1, 5)
-            });
+            Actions.changeStockPrice("MSFT", Utils.getRandomInt(1, 5));
         }
     }
 }

@@ -1,6 +1,7 @@
 import fs from "fs";
 import {Log, Store, Utils} from "@cloudrex/forge";
 import {ICompany, StoreActionType} from "../state/store";
+import {Actions} from "./actions";
 
 const CompaniesFile: string = "data/companies.json";
 
@@ -17,7 +18,7 @@ export default abstract class GameCore {
         const companies: ICompany[] = await Utils.readJson(CompaniesFile);
 
         for (const company of companies) {
-            store.dispatch(StoreActionType.AddCompany, company);
+            Actions.addCompany(company);
         }
 
         Log.success("[App] Finished loading company data");
