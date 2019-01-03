@@ -15,6 +15,7 @@ if (!fs.existsSync(".env")) {
     process.exit(0);
 }
 
+// Useful for debugging
 Log.level = LogLevel.Debug;
 Log.hiddenItems = true;
 
