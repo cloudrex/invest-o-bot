@@ -1,4 +1,4 @@
-import {Reducer, IStoreAction, Log} from "@cloudrex/forge";
+import {Reducer, IStoreAction} from "@cloudrex/forge";
 import {IState, StoreActionType, ICompany, CompanyMap} from "../store";
 
 const CompanyReducer: Reducer<IState> = (action: IStoreAction, state?: IState): IState | null => {
