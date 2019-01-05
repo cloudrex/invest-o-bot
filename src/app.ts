@@ -25,7 +25,7 @@ const env: Env = process.env as Env;
 const bot: Bot = new Bot<IState, StoreActionType>({
     settings: new Settings({
         general: {
-            prefixes: [env.PREFIX] as string[],
+            prefixes: [env.PREFIX],
             token: env.TOKEN,
         },
 
@@ -41,7 +41,7 @@ const bot: Bot = new Bot<IState, StoreActionType>({
 });
 
 // Export store as a global
-export const store = bot.store;
+export const store: Store = bot.store;
 
 // Register reducers
 bot.store.addReducer(Store.mergeReducers(
