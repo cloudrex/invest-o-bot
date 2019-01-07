@@ -6,7 +6,7 @@ export default class NewsCommand extends Command {
         description: "Stay informed of the latest news"
     };
 
-    readonly aliases: string[] = ["latest", "feed"];
+    readonly aliases: string[] = ["feed"];
 
     readonly constraints: any = {
         cooldown: 3

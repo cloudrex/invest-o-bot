@@ -52,4 +52,4 @@ bot.store.addReducer(Store.mergeReducers(
 // Load companies
 GameCore.loadCompanies()
     // Then connect the bot
-    .then(bot.connect);
+    .then(bot.connect.bind(bot));
