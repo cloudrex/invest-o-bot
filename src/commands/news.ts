@@ -15,6 +15,9 @@ export default class NewsCommand extends Command {
     public async run(x: Context): Promise<void> {
         x.ok(new MsgBuilder()
             .addLine("The latest news are:")
-            .codeBlock("There are no recent news yet. Come check back later!"));
+            .block()
+            .add("There are no recent news yet. Come check back later!")
+            .block()
+        );
     }
 };

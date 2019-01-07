@@ -23,7 +23,7 @@
     },
     "homepage": "https://github.com/discord-forge/example-forge-bot#readme",
     "dependencies": {
-        "@cloudrex/forge": "^1.2.5-beta.8",
+        "@cloudrex/forge": "^1.2.5-beta.9",
         "dotenv": "^6.1.0"
     },
     "devDependencies": {

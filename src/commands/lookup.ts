@@ -1,6 +1,6 @@
 import {Command, Context, IArgument, TrivialArgType} from "@cloudrex/forge";
 
-interface ILookupArgs {
+interface Args {
     readonly company: string;
 }
 
@@ -25,7 +25,7 @@ export default class LookupCommand extends Command {
         }
     ];
 
-    public async run(x: Context, args: ILookupArgs): Promise<void> {
+    public async run(x: Context, args: Args): Promise<void> {
         if (args.company.length < 2 || args.company.length > 4) {
             x.fail("Acronyms consist of 2-4 characters");
 
