@@ -7,10 +7,10 @@ const CompaniesFile: string = "data/companies.json";
 
 export default abstract class GameCore {
     public static async loadCompanies(): Promise<void> {
-        Log.verbose("[App] Loading company data");
+        Log.verbose("Loading company data");
 
         if (!fs.existsSync(CompaniesFile)) {
-            Log.fatal("[App] Expecting companies file to exist");
+            Log.fatal("Expecting companies file to exist");
 
             return;
         }
@@ -21,6 +21,6 @@ export default abstract class GameCore {
             Actions.addCompany(company);
         }
 
-        Log.success("[App] Finished loading company data");
+        Log.success("Finished loading company data");
     }
 }

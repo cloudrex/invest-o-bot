@@ -13,7 +13,7 @@ export default class NewsWorker extends Task {
     readonly interval: number = 0.3 * 60_000;
 
     public run(): void {
-        Log.verbose("[NewsWorker] Running news worker");
+        Log.verbose("Running news worker");
 
         // TODO
         if (Utils.getRandomInt(0, NewsWorker.chance) === 0) {

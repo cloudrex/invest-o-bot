@@ -1,37 +1,30 @@
-import {Command, Context, IArgument, TrivialArgType} from "@cloudrex/forge";
+import {Command, Context, IArgument, TrivialArgType, Name, Description, Constraint} from "@cloudrex/forge";
+import {Aliases, Arguments} from "@cloudrex/forge/dist/decorators/general";
 
-interface Args {
+interface IArgs {
     readonly company: string;
 }
 
+@Name("lookup")
+@Description("View stock information of a company")
+@Aliases("look", "stock")
+@Constraint.Cooldown(3)
+@Arguments(
+    {
+        name: "company",
+        description: "The company to lookup",
+        required: true,
+        type: TrivialArgType.String
+    }
+)
 export default class LookupCommand extends Command {
-    readonly meta = {
-        name: "lookup",
-        description: "View stock information of a company"
-    };
-
-    readonly aliases: string[] = ["look", "stock"];
-
-    readonly constraints: any = {
-        cooldown: 3
-    };
-
-    readonly arguments: IArgument[] = [
-        {
-            name: "company",
-            description: "The company to lookup",
-            required: true,
-            type: TrivialArgType.String
-        }
-    ];
-
-    public async run(x: Context, args: Args): Promise<void> {
+    public async run(x: Context, args: IArgs): Promise<void> {
         if (args.company.length < 2 || args.company.length > 4) {
-            x.fail("Acronyms consist of 2-4 characters");
+            await x.fail("Acronyms consist of 2-4 characters");
 
             return;
         }
 
-        x.fail("That company doesn't exist! Verify your acronym");
+        await x.fail("That company doesn't exist! Verify your acronym");
     }
 };
