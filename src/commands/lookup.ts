@@ -1,4 +1,4 @@
-import {Command, Context, IArgument, TrivialArgType, Name, Description, Constraint} from "@cloudrex/forge";
+import {Command, Context, Type, Name, Description, Constraint} from "@cloudrex/forge";
 import {Aliases, Arguments} from "@cloudrex/forge/dist/decorators/general";
 
 interface IArgs {
@@ -14,7 +14,7 @@ interface IArgs {
         name: "company",
         description: "The company to lookup",
         required: true,
-        type: TrivialArgType.String
+        type: Type.String
     }
 )
 export default class LookupCommand extends Command {
